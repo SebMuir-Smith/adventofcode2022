@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fc424845-c0ed-4ab8-8506-9e86834d7d8f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Day7Part1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Day7Part2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TreeNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TreeNodeBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Day8Part1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -94,7 +91,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672121996179</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Complete day 7">
+      <created>1672191260047</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1672191260047</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -105,7 +109,8 @@
     <MESSAGE value="Complete day 2" />
     <MESSAGE value="Complete day 3" />
     <MESSAGE value="Complete day 4" />
-    <option name="LAST_COMMIT_MESSAGE" value="Complete day 4" />
+    <MESSAGE value="Complete day 7" />
+    <option name="LAST_COMMIT_MESSAGE" value="Complete day 7" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -136,6 +141,12 @@
           <url>file://$PROJECT_DIR$/src/Day6Part1.java</url>
           <line>26</line>
           <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <condition expression="row == 81 &amp;&amp; column == 2" language="JAVA" />
+          <url>file://$PROJECT_DIR$/src/Day8Part1.java</url>
+          <line>85</line>
+          <option name="timeStamp" value="43" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
