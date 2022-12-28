@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fc424845-c0ed-4ab8-8506-9e86834d7d8f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Day5Part1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Day5Part2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Day6Part1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Day6Part2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Range.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Day7Part1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Day7Part2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TreeNode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TreeNodeBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,6 +47,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
