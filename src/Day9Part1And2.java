@@ -1,9 +1,8 @@
 import java.util.HashSet;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Day9Part1 {
+public class Day9Part1And2 {
 
     static int dim = 6;
     static char[][] grid = new char[dim][dim];
