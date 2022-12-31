@@ -1,39 +1,68 @@
-import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Day15Part1 {
+public class Day15 {
+    static HashSet<Coord> coords = new HashSet(50604913);
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
+        // Run in debug mode with breakpoint on "add records" or it will run out of memory...
         List<Sensor> sensors = input.lines().map(Sensor::new).toList();
         sensors.forEach(Sensor::updateMaximums);
-        Sensor.calculateRanges();
-        sensors.forEach(Sensor::drawRange);
-        sensors.forEach(Sensor::drawBeacon);
-        Sensor.displayScreen();
-        System.out.println(Sensor.cantContain(2000000));
+        sensors.forEach(Sensor::addRecords);
+        boolean notBeaconAccumulator;
+        boolean rangeAccumulator;
+        int y = 2000000;
+        int counter = 0;
+        for (Long x = Sensor.xMin; x <= Sensor.xMax; x++) {
+            notBeaconAccumulator = true;
+            rangeAccumulator = false;
+            for (Sensor sensor :
+                    sensors) {
+                if (notBeaconAccumulator) {
+                    notBeaconAccumulator = notBeaconAccumulator && sensor.notBeacon(x, y);
+                    if (notBeaconAccumulator && !rangeAccumulator) {
+                        rangeAccumulator = rangeAccumulator || sensor.inRange(x, y);
+                    }
+                }
+
+            }
+            if (notBeaconAccumulator && rangeAccumulator){
+                counter++;
+            }
+        }
+        System.out.println(counter);
+        System.out.println("Starting search...");
+        coords.parallelStream().filter(coord -> {
+            boolean found = false;
+            for (Sensor sensor :
+                    sensors) {found = found || sensor.inRange(coord.x, coord.y);};
+            if (!found){
+                System.out.println(coord.x + ", " + coord.y);
+                return true;
+            }
+            return false;
+        }).findFirst();
     }
 
-    static class Sensor{
-        static Integer xMin;
-        static Integer xMax;
-        static Integer yMin;
-        static Integer yMax;
+    static record Coord(long x, long y){};
 
-        static int xRange;
-        static int yRange;
+    static class Sensor {
+        static Long xMin;
+        static Long xMax;
+        static Long yMin;
+        static Long yMax;
 
-        static char[][] screen;
+        long x;
+        long y;
 
-        int x;
-        int y;
+        long beaconX;
+        long beaconY;
 
-        int beaconX;
-        int beaconY;
+        long dist;
 
-        int dist;
-        public Sensor(String line){
+        public Sensor(String line) {
             Matcher m = Pattern.compile("Sensor at x=(.+), y=(.+): closest beacon is at x=(.+), y=(.+)").matcher(line);
             m.find();
             x = Integer.parseInt(m.group(1));
@@ -45,62 +74,43 @@ public class Day15Part1 {
             dist = Math.abs(x - beaconX) + Math.abs(y - beaconY);
         }
 
-        void drawRange(){
-            for (int xDiff = -dist; xDiff <= dist; xDiff++){
-                for (int yDiff = Math.abs(xDiff) - dist; yDiff <= dist - Math.abs(xDiff); yDiff++){
-                    draw(x + xDiff, y + yDiff, '#');
-                }
-            }
-        }
-
-        void drawBeacon(){
-            draw(beaconX, beaconY, 'B');
-        }
-
-        static int cantContain(int y){
-            int counter = 0;
-            for (int x = xMin; x <= xMax; x++){
-                if (screen[(y - yMin)][(x - xMin)] == '#'){
-                    counter++;
-                }
-            }
-            return counter;
-        }
-
         void updateMaximums() {
             xMin = xMin == null ? x - dist : Math.min(xMin, x - dist);
             xMax = xMax == null ? x + dist : Math.max(xMax, x + dist);
 
             yMin = yMin == null ? y - dist : Math.min(yMin, y - dist);
-            yMax = yMax == null ? y + dist: Math.max(yMax, y + dist);
+            yMax = yMax == null ? y + dist : Math.max(yMax, y + dist);
         }
 
-        static void calculateRanges() {
-            yRange = yMax - yMin + 1;
-            xRange = xMax - xMin + 1;
+        boolean inRange(long x, long y) {
+            long distance = Math.abs(this.x - x) + Math.abs(this.y - y);
+            return distance <= dist;
+        }
+
+        boolean notBeacon(long x, long y) {
+            boolean result = ! ((x == beaconX) && (y == beaconY));
+            return result;
+        }
+
+        boolean inPart2Range(long x, long y){
+            return x >=0 && x <= 4000000 && y >=0 && y <= 4000000;
+        }
 
 
-            screen = new char[yRange][xRange];
-            for (int row = 0; row < yRange; row++) {
-                for (int col = 0; col < xRange; col++) {
-                    screen[row][col] = '.';
+        void addRecords(){
+            long xDist;
+            for (long yRange = -dist; yRange <= dist; yRange++){
+                xDist = dist - Math.abs(yRange);
+                if (inPart2Range(x - xDist - 1, y + yRange)){
+                    coords.add(new Coord(x - xDist - 1, y + yRange));
+                }
+                if (inPart2Range(x + xDist + 1, y + yRange)){
+                    coords.add(new Coord(x + xDist + 1, y + yRange));
                 }
             }
         }
 
-        static void displayScreen() {
-            clrscr();
-            for (int row = 0; row < yRange; row++) {
-                for (int col = 0; col < xRange; col++) {
-                    System.out.print(screen[row][col]);
-                }
-                System.out.print("\n");
-            }
-        }
 
-        static void draw(int x, int y, char sym) {
-            screen[(y - yMin)][(x - xMin)] = sym;
-        }
     }
 
     static final String testInput = """
@@ -157,7 +167,7 @@ public class Day15Part1 {
             Sensor at x=1590740, y=3586256: closest beacon is at x=1532002, y=3577287
             Sensor at x=1033496, y=3762565: closest beacon is at x=1532002, y=3577287""";
 
-    public static void clrscr(){
+    public static void clrscr() {
         //Clears Screen in java
         System.out.println("\n\n\n\n\n\n\n");
     }
