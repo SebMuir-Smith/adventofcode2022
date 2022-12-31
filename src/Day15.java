@@ -10,7 +10,7 @@ public class Day15 {
         // Run in debug mode with breakpoint on "add records" or it will run out of memory...
         List<Sensor> sensors = input.lines().map(Sensor::new).toList();
         sensors.forEach(Sensor::updateMaximums);
-        sensors.forEach(Sensor::addRecords);
+        sensors.parallelStream().forEach(Sensor::addRecords);
         boolean notBeaconAccumulator;
         boolean rangeAccumulator;
         int y = 2000000;
