@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fc424845-c0ed-4ab8-8506-9e86834d7d8f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Day16.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Day15Part1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Day15.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +62,7 @@
       <option name="presentableId" value="Default" />
       <updated>1672111514146</updated>
       <workItem from="1672111515398" duration="16659000" />
-      <workItem from="1672451093347" duration="353000" />
+      <workItem from="1672451093347" duration="10209000" />
     </task>
     <task id="LOCAL-00001" summary="Complete day 1">
       <created>1672112392231</created>
@@ -155,7 +155,21 @@
       <option name="project" value="LOCAL" />
       <updated>1672392358673</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Complete Day 15">
+      <created>1672451461806</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1672451461806</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Fix Day 15 memory bug with parallel stream">
+      <created>1672451622228</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1672451622228</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,7 +189,9 @@
     <MESSAGE value="Complete day 13" />
     <MESSAGE value="Complete day 14" />
     <MESSAGE value="Day 15 checkpoint" />
-    <option name="LAST_COMMIT_MESSAGE" value="Day 15 checkpoint" />
+    <MESSAGE value="Complete Day 15" />
+    <MESSAGE value="Fix Day 15 memory bug with parallel stream" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix Day 15 memory bug with parallel stream" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -255,10 +271,16 @@
           <line>37</line>
           <option name="timeStamp" value="128" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <condition expression="timer == 14" language="JAVA" />
+          <url>file://$PROJECT_DIR$/src/Day16.java</url>
+          <line>42</line>
+          <option name="timeStamp" value="145" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Day15.java</url>
           <line>101</line>
-          <properties class="Day15.Sensor" method="addRecords">
+          <properties class="Day15.Sensor">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
